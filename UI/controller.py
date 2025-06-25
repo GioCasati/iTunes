@@ -40,4 +40,11 @@ class Controller:
 
 
     def handleGetSetAlbum(self, e):
-        pass
+        if not self._album:
+            self._view.create_alert('Seleziona un album!')
+            return
+        self._view.txt_result.controls.clear()
+        self._view.txt_result.controls.append(ft.Text('Set di album trovato:'))
+        for album in self._model.getAlbumSet(self._album):
+            self._view.txt_result.controls.append(ft.Text(album))
+        self._view.update_page()

@@ -49,7 +49,7 @@ class Model:
                 parziale.append(node)
                 self._ricorsione(parziale, dTot)
                 parziale.pop()
-        return self._bestPath, self._maxLen
+        return self._bestPath, sum([n.dTot for n in self._bestPath])
 
     def _ricorsione(self, parziale, dTot):
         if (newLen:=len(parziale)) > self._maxLen:
